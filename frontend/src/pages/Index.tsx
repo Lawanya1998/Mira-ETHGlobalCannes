@@ -1,13 +1,14 @@
 
 import React, { useState } from 'react';
 import { WelcomeScreen } from '@/components/WelcomeScreen';
+import { SetupScreen } from '@/components/SetupScreen';
 import { WalletScreen } from '@/components/WalletScreen';
 import { ProgressScreen } from '@/components/ProgressScreen';
 import { EmergencyScreen } from '@/components/EmergencyScreen';
 import { ChatScreen } from '@/components/ChatScreen';
 import { ReputationScreen } from '@/components/ReputationScreen';
 
-type Screen = 'welcome' | 'wallet' | 'progress' | 'emergency' | 'chat' | 'reputation';
+type Screen = 'welcome' | 'wallet' | 'progress' | 'emergency' | 'chat' | 'reputation' | 'setup';
 
 const Index = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>('welcome');
@@ -17,7 +18,7 @@ const Index = () => {
 
   const handleSetupComplete = () => {
     setIsSetupComplete(true);
-    setCurrentScreen('wallet');
+    setCurrentScreen('setup');
   };
 
   const handleNavigate = (screen: string) => {
@@ -28,6 +29,8 @@ const Index = () => {
     switch (currentScreen) {
       case 'welcome':
         return <WelcomeScreen onSetupComplete={handleSetupComplete} />;
+      case 'setup':
+        return <SetupScreen onNavigate={handleNavigate} />;
       case 'wallet':
         return <WalletScreen onNavigate={handleNavigate} />;
       case 'progress':

@@ -327,6 +327,13 @@ export const WalletScreen = ({ onNavigate }: WalletScreenProps) => {
             {/* Navigation Actions */}
             <div className="flex items-center space-x-3">
               <button
+                onClick={() => onNavigate('setup')}
+                className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm text-purple-600 px-4 py-2 rounded-full hover:bg-white transition-all duration-200 shadow-md hover:shadow-lg border border-purple-200"
+              >
+                <ArrowRight className="w-4 h-4 rotate-180" />
+                <span className="text-sm font-medium">Back to Setup</span>
+              </button>
+              <button
                 onClick={() => onNavigate('chat')}
                 className="flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-rose-500 text-white px-4 py-2 rounded-full hover:from-purple-600 hover:to-rose-600 transition-all duration-200 shadow-lg hover:shadow-xl"
               >

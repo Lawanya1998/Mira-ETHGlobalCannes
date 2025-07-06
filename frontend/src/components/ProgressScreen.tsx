@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Home, ArrowLeft, Share2, Download, Brain, FileText, Briefcase, Star } from 'lucide-react';
 
 interface ProgressScreenProps {
-  onNavigate: (screen: 'wallet' | 'progress' | 'emergency') => void;
+  onNavigate: (screen: 'wallet' | 'progress' | 'emergency' | 'setup') => void;
 }
 
 export const ProgressScreen = ({ onNavigate }: ProgressScreenProps) => {
@@ -77,19 +77,22 @@ export const ProgressScreen = ({ onNavigate }: ProgressScreenProps) => {
     <div className="min-h-screen p-6">
       {/* Navigation */}
       <div className="flex justify-between items-center mb-8">
-        <button
-          onClick={() => onNavigate('wallet')}
-          className="flex items-center space-x-2 text-gray-600 hover:text-gray-800"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span className="text-sm">Back to Safe Space</span>
-        </button>
-        <button
-          onClick={() => onNavigate('wallet')}
-          className="p-2 rounded-full bg-white/50 text-gray-600 hover:bg-white/80"
-        >
-          <Home className="w-5 h-5" />
-        </button>
+        <div className="flex items-center space-x-3">
+          <button
+            onClick={() => onNavigate('setup')}
+            className="flex items-center space-x-2 text-purple-600 hover:text-purple-800 bg-white/80 backdrop-blur-sm px-3 py-2 rounded-full hover:bg-white transition-all duration-200 shadow-md hover:shadow-lg border border-purple-200"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span className="text-sm font-medium">Back to Setup</span>
+          </button>
+          <button
+            onClick={() => onNavigate('wallet')}
+            className="flex items-center space-x-2 text-gray-600 hover:text-gray-800"
+          >
+            <Home className="w-4 h-4" />
+            <span className="text-sm">Safe Space</span>
+          </button>
+        </div>
       </div>
 
       <div className="max-w-md mx-auto animate-slide-up">
