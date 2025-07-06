@@ -54,13 +54,14 @@ const SCOPE = "mira-finance-restart";
 console.log(`Application Scope: ${SCOPE}`);
 
 // 2. Set up the public endpoint URL. 
-// This MUST be a public URL accessible from the internet.
-// For local development, use a tool like ngrok.
-const HOSTED_ENDPOINT_URL = "https://00ee-75-243-221-158.ngrok-free.app/api/self-verify";
+// This will be dynamically set based on the environment (Vercel or local)
+const HOSTED_ENDPOINT_URL = process.env.VERCEL_URL 
+  ? `https://${process.env.VERCEL_URL}/api/self-verify`
+  : process.env.PUBLIC_URL || "http://localhost:3001/api/self-verify";
+
 console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`);
 console.log(`!!! IMPORTANT: Your verification endpoint is: ${HOSTED_ENDPOINT_URL}`);
-console.log(`!!! You must use a tool like ngrok to expose localhost:${port} to the public internet`);
-console.log(`!!! and update the URL above for the Self relay to reach your server.`);
+console.log(`!!! Make sure this URL is accessible from the internet for Self.xyz to work.`);
 console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`);
 
 // 3. Simple IConfigStorage implementation for MIRA's requirements.
@@ -500,9 +501,15 @@ app.get('/api/graph/health', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
+// For Vercel deployment, export the app instead of starting a server
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  // For local development, start the server
+  app.listen(port, () => {
     console.log(`
 🚀 MIRA Backend Server is running on http://localhost:${port}
 📊 Graph Protocol integration active
     `);
-}); 
+  });
+} 
