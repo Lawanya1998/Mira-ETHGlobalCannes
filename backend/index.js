@@ -8,7 +8,7 @@ const GraphService = require('./services/graphService');
 require('dotenv').config(); // To load environment variables from a .env file
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = 3001;
 
 // Middleware to parse JSON bodies. This is crucial for webhooks.
 app.use(express.json());
@@ -505,8 +505,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`
-🚀 MIRA Backend Server is running on http://localhost:${port}
-📊 Graph Protocol integration active
-    `);
+    console.log(`🚀 MIRA Backend Server is running on http://localhost:${port}`);
 }); 
