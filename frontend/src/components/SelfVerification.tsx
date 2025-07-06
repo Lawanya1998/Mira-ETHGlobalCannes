@@ -56,28 +56,7 @@ export const SelfVerification: React.FC<SelfVerificationProps> = ({ onVerificati
     });
   };
 
-  const handleTestVerification = async () => {
-    console.log('🧪 Test mode: Simulating successful verification');
-    setVerificationStatus('success');
-    
-    // Simulate successful verification with mock data
-    setTimeout(() => {
-      onVerificationSuccess({
-        userId: userId,
-        verifiedAt: new Date().toISOString(),
-        method: 'test_mock',
-        disclosedData: {
-          nationality: ['US'],
-          name: ['Test User']
-        },
-        wallet: {
-          id: 'test-wallet-id',
-          address: '0x1234567890abcdef1234567890abcdef12345678',
-          blockchain: 'MATIC-AMOY'
-        }
-      });
-    }, 2000);
-  };
+
 
   const handleVerificationError = (error: any) => {
     console.error('Self.xyz verification failed:', error);
@@ -142,18 +121,7 @@ export const SelfVerification: React.FC<SelfVerificationProps> = ({ onVerificati
         </div>
       )}
 
-      {/* Test Button for Development */}
-      <div className="mb-6">
-        <button
-          onClick={handleTestVerification}
-          className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
-        >
-          🧪 Test: Complete Verification (Skip QR Code)
-        </button>
-        <p className="text-xs text-gray-500 mt-2 text-center">
-          For testing purposes - simulates successful verification
-        </p>
-      </div>
+
 
       <div className="bg-blue-50 rounded-lg p-4 text-left">
         <h4 className="font-medium text-blue-900 mb-2 text-sm">How it works:</h4>
