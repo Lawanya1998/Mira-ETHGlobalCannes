@@ -500,10 +500,9 @@ app.get('/api/graph/health', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.send('MIRA Backend is running!');
-});
-
 app.listen(port, () => {
-    console.log(`🚀 MIRA Backend Server is running on http://localhost:${port}`);
+    console.log(`
+🚀 MIRA Backend Server is running on http://localhost:${port}
+📊 Graph Protocol integration active
+    `);
 }); 
