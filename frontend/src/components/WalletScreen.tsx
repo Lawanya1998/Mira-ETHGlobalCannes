@@ -152,7 +152,7 @@ export const WalletScreen = ({ onNavigate }: WalletScreenProps) => {
     setError('');
     
     try {
-      const response = await fetch('http://localhost:3001/api/wallet/create', {
+      const response = await fetch('https://mira-eth-global-cannes-4pe7.vercel.app/api/wallet/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -190,7 +190,7 @@ export const WalletScreen = ({ onNavigate }: WalletScreenProps) => {
   // Fetch wallet balance from Circle API
   const fetchWalletBalance = async (walletId: string) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/wallet/${walletId}/balance`);
+      const response = await fetch(`https://mira-eth-global-cannes-4pe7.vercel.app/api/wallet/${walletId}/balance`);
       if (!response.ok) {
         throw new Error('Failed to fetch balance');
       }
@@ -211,7 +211,7 @@ export const WalletScreen = ({ onNavigate }: WalletScreenProps) => {
   // Fetch transaction history
   const fetchTransactions = async (walletId: string) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/wallet/${walletId}/transactions`);
+      const response = await fetch(`https://mira-eth-global-cannes-4pe7.vercel.app/api/wallet/${walletId}/transactions`);
       if (!response.ok) {
         throw new Error('Failed to fetch transactions');
       }
@@ -250,7 +250,7 @@ export const WalletScreen = ({ onNavigate }: WalletScreenProps) => {
   // Fetch reputation data from The Graph
   const fetchReputationData = async (walletAddress: string) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/graph/reputation/${walletAddress}`);
+      const response = await fetch(`https://mira-eth-global-cannes-4pe7.vercel.app/api/graph/reputation/${walletAddress}`);
       if (!response.ok) {
         throw new Error('Failed to fetch reputation data');
       }

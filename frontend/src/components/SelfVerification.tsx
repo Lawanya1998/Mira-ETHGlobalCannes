@@ -22,7 +22,7 @@ export const SelfVerification: React.FC<SelfVerificationProps> = ({ onVerificati
         version: 2,
         appName: "MIRA - Financial Rebirth",
         scope: "mira-finance-restart", // Same scope as backend
-        endpoint: "https://00ee-75-243-221-158.ngrok-free.app/api/self-verify", // Our backend endpoint
+        endpoint: "https://mira-eth-global-cannes-4pe7.vercel.app/api/self-verify", // Our backend endpoint
         logoBase64: "", // Empty logo for now to avoid issues
         userId: userId,
         userIdType: "uuid",

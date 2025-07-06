@@ -79,10 +79,10 @@ export const ReputationScreen: React.FC<ReputationScreenProps> = ({ walletAddres
       setError(null);
 
       const [reputationRes, disbursementsRes, statsRes, leaderboardRes] = await Promise.all([
-        fetch(`http://localhost:3001/api/graph/reputation/${mockWalletAddress}`),
-        fetch(`http://localhost:3001/api/graph/aid-disbursements/${mockWalletAddress}`),
-        fetch(`http://localhost:3001/api/graph/stats`),
-        fetch(`http://localhost:3001/api/graph/leaderboard?limit=10`)
+        fetch(`https://mira-eth-global-cannes-4pe7.vercel.app/api/graph/reputation/${mockWalletAddress}`),
+        fetch(`https://mira-eth-global-cannes-4pe7.vercel.app/api/graph/aid-disbursements/${mockWalletAddress}`),
+        fetch(`https://mira-eth-global-cannes-4pe7.vercel.app/api/graph/stats`),
+        fetch(`https://mira-eth-global-cannes-4pe7.vercel.app/api/graph/leaderboard?limit=10`)
       ]);
 
       if (!reputationRes.ok || !disbursementsRes.ok || !statsRes.ok || !leaderboardRes.ok) {
